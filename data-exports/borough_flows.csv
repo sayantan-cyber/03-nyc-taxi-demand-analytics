@@ -1,0 +1,11 @@
+pickup_borough,dropoff_borough,trips
+Manhattan,Manhattan,16031572
+Queens,Manhattan,1067652
+Manhattan,Queens,601284
+Queens,Queens,437685
+Manhattan,Brooklyn,419146
+Queens,Brooklyn,275329
+Unknown,Unknown,156769
+Brooklyn,Brooklyn,65226
+Manhattan,Bronx,59794
+Manhattan,EWR,51618

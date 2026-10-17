@@ -1,0 +1,125 @@
+== Q1. Daily demand with 7-day moving average and day-over-day change ==
+pickup_date  trips  trips_ma7  dod_change_pct
+ 2023-01-01  76752    76752.0             NaN
+ 2023-01-02  65777    71265.0           -14.3
+ 2023-01-03  85783    76104.0            30.4
+ 2023-01-04  95092    80851.0            10.9
+ 2023-01-05 101063    84893.0             6.3
+ 2023-01-06 102550    87836.0             1.5
+ 2023-01-07 105036    90293.0             2.4
+ 2023-01-08  85056    91480.0           -19.0
+ 2023-01-09  85349    94276.0             0.3
+ 2023-01-10  99916    96295.0            17.1
+ 2023-01-11 106118    97870.0             6.2
+ 2023-01-12 111386    99344.0             5.0
+(181 rows)
+
+== Q2. Fare and tip percentiles by borough (exact percentiles, not approximations) ==
+      Borough    trips  median_fare  p90_fare  p99_fare  median_tip_pct
+    Manhattan 13640730        20.50     37.32     96.55            26.2
+       Queens  1386894        77.25    100.26    160.33            23.0
+      Unknown   163234        22.65     75.18    107.88            24.9
+     Brooklyn    79795        29.70     61.42    101.00            12.4
+        Bronx    22756        32.73     62.55     98.26             0.0
+          N/A     7481       107.75    237.00    421.32             9.0
+          EWR     2077       125.00    165.06    251.06            13.9
+Staten Island     1362        75.25     98.26    168.88             0.0
+(8 rows)
+
+== Q3. Rush-hour premium: same borough pair, rush vs off-rush fare/min ==
+     pu_b      do_b  rush_usd_per_min  offrush_usd_per_min
+ Brooklyn  Brooklyn              1.45                 1.60
+ Brooklyn Manhattan              1.46                 1.62
+ Brooklyn    Queens               NaN                 1.58
+Manhattan     Bronx              1.58                 1.81
+Manhattan  Brooklyn              1.57                 1.70
+Manhattan       EWR              3.09                 3.36
+Manhattan Manhattan              2.02                 1.97
+Manhattan       N/A               NaN                 3.26
+Manhattan    Queens              2.05                 2.10
+Manhattan   Unknown               NaN                 1.92
+   Queens     Bronx               NaN                 2.48
+   Queens  Brooklyn              1.83                 2.11
+(12 rows)
+
+== Q4. Airport economics: JFK/LaGuardia/EWR vs city average ==
+   pickup_segment    trips  avg_miles  avg_total  avg_tip_pct
+  All other zones 14060911        2.6      24.89         25.1
+      JFK Airport   696935       17.0      87.89         18.6
+LaGuardia Airport   544406       10.0      68.42         24.0
+   Newark Airport     2077        1.2     116.29         12.7
+(4 rows)
+
+== Q5. Congestion-surcharge zones: share of trips paying it, avg amount ==
+      Borough    trips  pct_paying_surcharge  avg_surcharge
+    Manhattan 17222979                  96.9            2.5
+       Queens  1877797                  52.1            2.5
+      Unknown   208347                  73.4            2.5
+     Brooklyn   134577                  26.0            2.5
+        Bronx    29938                   3.2            2.5
+          N/A    15423                   3.4            2.5
+          EWR     2644                   0.6            2.5
+Staten Island     1814                   0.9            2.5
+(8 rows)
+
+== Q6. Zone growth ranking: June vs January trip change, top risers/fallers ==
+                         Zone     jan      jun  growth_pct  growth_rank
+     Financial District South  6794.0   9241.0        36.0            1
+            LaGuardia Airport 89186.0 119806.0        34.3            2
+           World Trade Center 12842.0  16955.0        32.0            3
+     Financial District North 13946.0  18115.0        29.9            4
+            Battery Park City 15780.0  20164.0        27.8            5
+          Little Italy/NoLiTa 23851.0  29295.0        22.8            6
+                 Clinton West 18552.0  22461.0        21.1            7
+Meatpacking/West Village West 24212.0  29268.0        20.9            8
+                    Hudson Sq 13977.0  16592.0        18.7            9
+    West Chelsea/Hudson Yards 46262.0  54841.0        18.5           10
+(10 rows)
+
+== Q7. Revenue concentration: top 10 zones' share of total revenue ==
+ top10_zone_revenue_pct  top50_zone_revenue_pct
+                   46.8                    96.2
+(1 rows)
+
+== Q8. Trip-speed distribution by hour (traffic curve), Manhattan pickups ==
+ hour_of_day  trips  avg_speed_mph  median_speed_mph
+           0 459027           12.9              12.2
+           1 322226           13.6              12.9
+           2 219239           14.3              13.5
+           3 144224           15.4              14.4
+           4  91853           18.6              16.3
+           5  88333           19.6              16.6
+           6 218702           15.9              14.0
+           7 465988           12.7              11.3
+           8 660866           10.7               9.4
+           9 740817           10.2               9.0
+          10 798496            9.9               8.8
+          11 875508            9.5               8.4
+(24 rows)
+
+== Q9. Payment-mix shift by month (pivot) ==
+  month  card_pct  cash_pct
+2023-01      78.6      17.4
+2023-02      79.3      16.4
+2023-03      79.0      16.6
+2023-04      78.1      17.3
+2023-05      78.5      16.8
+2023-06      78.4      16.7
+(6 rows)
+
+== Q10. Late-night demand (00:00-05:00) by borough and weekday/weekend ==
+  Borough  weekend  late_night_trips  avg_total
+Manhattan    False            711555      24.14
+Manhattan     True            547122      23.65
+   Queens    False             85132      63.75
+   Queens     True             30264      62.84
+ Brooklyn    False             13442      30.53
+  Unknown    False              8881      29.62
+ Brooklyn     True              8560      29.78
+  Unknown     True              6177      26.73
+      N/A    False              1511      91.83
+    Bronx    False              1293      33.79
+      N/A     True               845      89.04
+    Bronx     True               625      32.96
+(16 rows)
+

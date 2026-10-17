@@ -1,0 +1,6 @@
+payment_name,trips,avg_tip_pct,median_tip_pct
+Credit card,15304329,24.74,25.88
+Cash,3245701,0.0,0.0
+Flex Fare trip,525286,17.16,20.08
+Dispute,123802,0.04,0.0
+No charge,88640,0.17,0.0
