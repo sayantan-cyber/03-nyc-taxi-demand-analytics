@@ -18,7 +18,7 @@ Jan-Jun 2023). All SQL executed in DuckDB 1.5.
    in the Bronx - the surcharge map is a Manhattan story.
 5. **Tipping is a card phenomenon.** Card tips average 24.7% of fare
    (median 25.9%, n = 15.3M). Cash shows 0.0% because cash tips are never
-   recorded - this is a measurement artifact, not behavior.
+   recorded - this is a measurement artifact, not behavior. In other words: 0.0% measures the recording system, not tipping behavior — any driver-income analysis must model or impute cash tips rather than treat it as a real tip rate.
 6. **Short trips earn the best tips:** 30.4% avg under 1 mile.
 7. **Rush hour pays drivers better tips.** Robust OLS (HC3, n = 300,000,
    card payments, tips capped at 100% of fare): rush hour +1.13 pp
